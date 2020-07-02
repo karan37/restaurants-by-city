@@ -1,0 +1,19 @@
+.citySearch__results {
+    padding: 0px;
+    margin: 0px;
+    height: 300px;
+    overflow: auto;
+    position: absolute;
+    width: inherit;
+    li {
+        list-style: none;
+    }
+}
+.citySearch {
+    width: 200px;
+    margin: 0 auto;
+    input {
+        text-align: center;
+    }
+}
+
