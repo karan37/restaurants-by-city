@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 
 import { connect } from "react-redux"
-import { getCities } from "../../actions"
+import { getCities, setCity, getRestaurantsOfCity } from "../../actions"
 
 import "./CitySearch.scss"
 
-const CitySearch = ({ cities, getCities }) => {
+const CitySearch = ({ cities, getCities, getRestaurantsOfCity, setCity }) => {
     useEffect(() => {
         getCities()
     }, [getCities]);
 
-    const [searchText, setSearchText] = useState("")
-    const filterCities = cities.filter(city => {
-        return city.toLowerCase().includes(searchText.toLowerCase())
-    })
+    const onSelectChange = e => {
+        setCity(e.target.value)
+        getRestaurantsOfCity(e.target.value)
+    }
     return (
         <div className="citySearch">
-            <label></label>
-            <input className="citySearch__input" onChange={e => {setSearchText(e.target.value)}} placeholder="Enter City Name"></input>
-            <div className="citySearch__results">
-                {filterCities.map((city, i) => (<a key={i}>{city}</a>))}
-            </div>
+            <select className="citySearch__results" onChange={onSelectChange} aria-label="Select city from dropdown">
+                <option className="blueBtn" key={0} value={null}>Please select a city below</option>
+                {cities.map((city, i) => (<option key={i+1} value={city}>{city}</option>))}
+            </select>
         </div>
     )
 }
 
 const mapStateToProps = ({ cities }) => ({ cities })
-export default connect(mapStateToProps, { getCities })(CitySearch)
+export default connect(mapStateToProps, { getCities, setCity, getRestaurantsOfCity })(CitySearch)

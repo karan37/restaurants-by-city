@@ -1,13 +1,22 @@
 import React from 'react';
 import CitySearch from "../CitySearch"
-import './App.css';
+import RefineFields from "../RefineFields"
+import ResultsList from "../ResultsList"
+import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      Restaurants By City
-      <CitySearch />
-      <input></input>
+      <div className="header">
+        <div>
+          <h1>Restaurants By City</h1>
+        </div>
+        <CitySearch />
+        <RefineFields />
+      </div>
+      <div className="contentBody">
+        <ResultsList />
+      </div>
     </div>
   );
 }

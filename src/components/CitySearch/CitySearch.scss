@@ -1,10 +1,9 @@
 .citySearch__results {
     padding: 0px;
     margin: 0px;
-    height: 300px;
     overflow: auto;
-    position: absolute;
     width: inherit;
+    text-align-last: center;
     li {
         list-style: none;
     }
@@ -15,5 +14,13 @@
     input {
         text-align: center;
     }
+}
+
+.blueBtn{
+    display: block;
+}
+.blueBtn:hover,
+.blueBtn:focus {
+  background-color: blue;
 }
 
