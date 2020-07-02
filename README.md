@@ -15,7 +15,7 @@ You will also see any lint errors in the console.
 ## Technical QuestionS
 
 ### Question 1
-It took me around a couple hours to implement this solution. I tried to make sure that atleast my submission has a solution that follows the user stor provided. I wish I had more time to be able to better style this project as well write some tests for it.
+It took me around a couple hours to implement this solution. I tried to make sure that atleast my submission has a solution that follows the user story provided. Also focusing on meeting WCAG compliance. I wish I had more time to be able to better style this project as well write some tests for it.
 
 ### Question 2
 Spread operators have been quite handy at returning new, un-mutated, objects from reducers eg.
