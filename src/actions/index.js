@@ -9,13 +9,11 @@ export const GET_CITIES_RESPONSE = "GET_CITIES_RESPONSE"
 
 export const getCities = () => {
     return async dispatch => {
-        console.log("bolo")
         dispatch({ type: GET_CITIES_REQUEST })
         let response
         try {
             response = await axios.get(`/cities`)
             const { cities } = response.data
-            console.log(response.data)
             dispatch({ type: GET_CITIES_RESPONSE, cities })
         } catch (e) {
             console.log(e)
@@ -41,17 +39,12 @@ export const GET_RESTAURANTS_OF_CITY_REQUEST = "GET_RESTAURANTS_OF_CITY_REQUEST"
 export const GET_RESTAURANTS_OF_CITY_RESPONSE = "GET_RESTAURANTS_OF_CITY_RESPONSE"
 
 export const getRestaurantsOfCity = city => {
-    console.log("yolo")
-    console.log({ city })
-
     return async dispatch => {
-        console.log({ city })
         dispatch({ type: GET_RESTAURANTS_OF_CITY_REQUEST })
         let response
         try {
             response = await axios.get(`/restaurants?city=${city}`)
             const { data } = response
-            console.log(response.data)
             dispatch({ type: GET_RESTAURANTS_OF_CITY_RESPONSE, data })
         } catch (e) {
             console.log(e)
@@ -66,14 +59,12 @@ export const FETCH_MORE_RESPONSE = "FETCH_MORE_RESPONSE"
 export const fetchMore = () => {
     return async (dispatch, getState) => {
         const { selectedCity: city, restaurants } = getState()
-        console.log({ city })
         dispatch({ type: FETCH_MORE_REQUEST })
         const page = (restaurants.length / 25) + 1
         let response
         try {
             response = await axios.get(`/restaurants?city=${city}&page=${page}`)
             const { data } = response
-            console.log(response.data)
             dispatch({ type: FETCH_MORE_RESPONSE, data })
         } catch (e) {
             console.log(e)
