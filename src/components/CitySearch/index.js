@@ -18,9 +18,9 @@ const CitySearch = ({ cities, getCities }) => {
         <div className="citySearch">
             <label></label>
             <input className="citySearch__input" onChange={e => {setSearchText(e.target.value)}} placeholder="Enter City Name"></input>
-            <ul className="citySearch__results">
-                {filterCities.map((city, i) => (<li key={i}>{city}</li>))}
-            </ul>
+            <div className="citySearch__results">
+                {filterCities.map((city, i) => (<a key={i}>{city}</a>))}
+            </div>
         </div>
     )
 }

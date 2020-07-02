@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ROOT_URL = process.env.API_URI || 'http://opentable.herokuapp.com/api/';
+const ROOT_URL = process.env.API_URI || 'https://opentable.herokuapp.com/api/';
 axios.defaults.baseURL = ROOT_URL;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
