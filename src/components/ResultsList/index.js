@@ -4,15 +4,13 @@ import { fetchMore } from "../../actions"
 
 import "./ResultsList.scss"
 
-const Restaurant = ({ name, address, area }) => {
-    return (
-        <div className="restaurant">
-            <p>{name}</p>
-            <p>{address}</p>
-            <p>{area}</p>
-        </div>
-    )
-}
+const Restaurant = ({ name, address, area }) => (
+    <div className="restaurant">
+        <p>{name}</p>
+        <p>{address}</p>
+        <p>{area}</p>
+    </div>
+)
 
 const ResultsList = ({ restaurants, totalRestaurants, fetchMore, refineText, selectedCity }) => {
     const onScroll = e => {
