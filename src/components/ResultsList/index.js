@@ -4,19 +4,35 @@ import { fetchMore } from "../../actions"
 
 import "./ResultsList.scss"
 
-const Restaurant = ({ name, address, area }) => (
-    <div className="restaurant">
-        <p>{name}</p>
-        <p>{address}</p>
-        <p>{area}</p>
-    </div>
-)
+const Restaurant = ({ restaurant }) => {
+    const { name, address, price, image_url, phone } = restaurant
+    console.log({ restaurant })
+    const priceRating = () => {
+        let stringBuilder = ""
+        for (let i = 1; i <= 4; i++) {
+            stringBuilder = stringBuilder + "$"
+        }
+        return stringBuilder
+    }
+    return (
+        <div className="restaurant">
+            <div className="cardBody">
+                <img src={image_url} alt={`Image of ${name} restaurant`} />
+                <div className="info">
+                    <b>{name}</b>
+                    <p aria-label="Address"> {address}</p>
+                    <p aria-label="Phone number"> {phone}</p>
+                    <p aria-label={`Price rating: ${price} out of 4`}>{priceRating()}</p>
+                </div>
+            </div>
+        </div>
+    )
+}
 
-const ResultsList = ({ restaurants, totalRestaurants, fetchMore, refineText, selectedCity }) => {
+const ResultsList = ({ restaurants, totalRestaurants, fetchMore, refineText, fetchingMore }) => {
     const onScroll = e => {
-        const resultListElements = document.getElementsByClassName("restaurant")
-        const lastElement = resultListElements[resultListElements.length - 1]
-        if (lastElement && lastElement.getBoundingClientRect().bottom <= window.innerHeight && totalRestaurants > restaurants.length) {
+        const scrollNearEnd = e.target.scrollHeight - Math.floor(e.target.offsetHeight + e.target.scrollTop) < 100
+        if (scrollNearEnd && restaurants.length < totalRestaurants && !fetchingMore) {
             fetchMore()
         }
     }
@@ -27,16 +43,12 @@ const ResultsList = ({ restaurants, totalRestaurants, fetchMore, refineText, sel
             area.toLowerCase().includes(refineTextToLowerCase)
     })
     return (
-        <div>
-            {filterRestaurants.length ? `Showing ${filterRestaurants.length} results of total ${totalRestaurants}, in ${selectedCity}` : `No results to display`}
-
-            <div className="resultsList" onScroll={onScroll}>
-                {filterRestaurants.map(({ name, address, area }, i) => (<Restaurant key={i} name={name} address={address} area={area} />))}
-            </div>
+        <div className="resultsList" onScroll={onScroll}>
+            {filterRestaurants.map((restaurant, i) => (<Restaurant key={i} restaurant={restaurant} />))}
         </div>
     )
 }
 
-const mapStateToProps = ({ restaurants, totalRestaurants, selectedCity, refineText }) => ({ restaurants, totalRestaurants, selectedCity, refineText })
+const mapStateToProps = ({ restaurants, totalRestaurants, selectedCity, refineText, fetchingMore }) => ({ restaurants, totalRestaurants, selectedCity, refineText, fetchingMore })
 
 export default connect(mapStateToProps, { fetchMore })(ResultsList)
