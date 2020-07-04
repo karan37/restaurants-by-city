@@ -9,9 +9,7 @@ function App() {
     <div className="App">
       <div className="header">
         <h1>Restaurants By City</h1>
-        <br/>
         <CitySearch />
-        <br/>
         <RefineFields />
       </div>
       <div className="contentBody">
