@@ -6,7 +6,6 @@ import "./ResultsList.scss"
 
 const Restaurant = ({ restaurant }) => {
     const { name, address, price, image_url, phone } = restaurant
-    console.log({ restaurant })
     const priceRating = () => {
         let stringBuilder = ""
         for (let i = 1; i <= 4; i++) {

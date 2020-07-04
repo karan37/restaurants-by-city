@@ -2,12 +2,26 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    height: 500px;
+    height: 100%;
     overflow: auto;
     .restaurant {
-        background-color: greenyellow;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height:175px;
+        .cardBody {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            img {
+                height: 175px;
+                width: 175px;
+            }
+            .info {
+                width: 150px;
+            }
+        }
         margin: 10px;
-        height: 200px;
-        width: 200px;
     }
 }

@@ -4,15 +4,18 @@ import { setRefineText } from "../../actions"
 
 import "./RefineFields.scss"
 
-const RefineFields = ({ cities, setRefineText }) => {
+const RefineFields = ({ setRefineText, selectedCity }) => {
     const onInputChange = e => {
         setRefineText(e.target.value)
     }
     return (
         <div className="refineFields">
-           <input onChange={onInputChange} aria-label="filter text" placeholder="Enter text to refine results"></input>
+            <label>Refine results :</label>
+            &nbsp;
+            <input disabled={selectedCity ? false : true} onChange={onInputChange} aria-label="filter text" placeholder="Enter text to refine results" />
         </div>
     )
 }
 
-export default connect(null, { setRefineText })(RefineFields)
+const mapStateToProps = ({ selectedCity }) => ({ selectedCity })
+export default connect(mapStateToProps, { setRefineText })(RefineFields)

@@ -16,8 +16,10 @@ const CitySearch = ({ cities, getCities, getRestaurantsOfCity, setCity }) => {
     }
     return (
         <div className="citySearch">
+            <label>Select city :</label>
+            &nbsp;
             <select className="citySearch__results" onChange={onSelectChange} aria-label="Select city from dropdown">
-                <option className="blueBtn" key={0} value={null}>Please select a city below</option>
+                <option className="blueBtn" key={0} value={""}>Choose city from dropdown</option>
                 {cities.map((city, i) => (<option key={i+1} value={city}>{city}</option>))}
             </select>
         </div>

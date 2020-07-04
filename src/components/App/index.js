@@ -8,10 +8,10 @@ function App() {
   return (
     <div className="App">
       <div className="header">
-        <div>
-          <h1>Restaurants By City</h1>
-        </div>
+        <h1>Restaurants By City</h1>
+        <br/>
         <CitySearch />
+        <br/>
         <RefineFields />
       </div>
       <div className="contentBody">

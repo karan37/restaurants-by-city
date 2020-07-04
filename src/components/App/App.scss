@@ -1,7 +1,23 @@
 .App {
   text-align: center;
+  height: 100%;
+  .header {
+    h1 {
+      margin: 0px;
+      padding: 0px;
+      font-size: 5vw;
+    }
+    height: 30%;
+    background-color: khaki;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contentBody {
+    height: 70%;
+  }
 }
-.header{
-  padding: 20px;
-  background-color: khaki;
+
+#root {
+  height: 100%;
 }
